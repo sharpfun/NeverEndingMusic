@@ -1,0 +1,8 @@
+.idea
+*.hdf5
+*.npy
+*.pyc
+*.zip
+*.tar
+dataset
+generated
