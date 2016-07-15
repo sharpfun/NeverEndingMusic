@@ -13,7 +13,7 @@ def gen():
 
     train_dataset = T_H5PYDataset(source_path, which_sets=('train',))
 
-    main_loop = load('./checkpoint.zip')
+    main_loop = load('./checkpoint-pitches.zip')
 
     model = main_loop.model
 
@@ -23,7 +23,7 @@ def gen():
 
     tensor_initial = [x for x in model.shared_variables if x.name == "initial_state"][0]
     tensor_hidden_states = [x for x in model.intermediary_variables if x.name == "hidden_apply_states"][0]
-    tensor_x = [x for x in model.variables if x.name == "syllables"][0]
+    tensor_x = [x for x in model.variables if x.name == "durations"][0]
     tensor_y = [x for x in model.variables if x.name == "ndim_softmax_apply_output"][0]
 
     predict_fun = function([tensor_x], tensor_y, updates=[
@@ -34,19 +34,25 @@ def gen():
 
     input_str_split = input_str.split("-")
 
-    input_arr = train_dataset.syllables_encode(input_str_split)
+    input_str_arr = train_dataset.syllables_encode(input_str_split)
 
-    input_arr_decoded = train_dataset.syllables_decode(input_arr)
+    input_str_arr_decoded = train_dataset.syllables_decode(input_str_arr)
 
-    print input_arr
+    input_durations = [13440, 26880, 17920, 13440, 26880, 26880, 26880, 13440, 13440, 80640, 13440, 13440, 26880, 53760,
+                       26880, 26880, 13440, 13440, 13440]
+    #[80640, 26880, 40320, 13440, 26880, 26880, 26880, 13440, 26880, 80640, 13440, 13440, 40320, 26880, 26880, 26880, 13440, 13440, 13440]
+    input_durations_arr = train_dataset.durations_encode(input_durations)
+
+    print input_str_arr
+    print input_durations_arr
 
     predictions = []
     import time
     numpy.random.seed(int(time.time()))
-    for i in range(len(input_arr)):
+    for i in range(len(input_durations_arr)):
         input_char = numpy.zeros((1, 1), dtype=numpy.int32)
-        input_char[0][0] = input_arr[i]
-        predictions.append(numpy.random.choice(train_dataset.durations_vocab_size(), 1, p=predict_fun(input_char)[0])[0])
+        input_char[0][0] = input_durations_arr[i]
+        predictions.append(numpy.random.choice(train_dataset.pitches_vocab_size(), 1, p=predict_fun(input_char)[0])[0])
 
     output = """<?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 2.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
@@ -135,20 +141,28 @@ def gen():
                 </attributes>
             </measure>"""
 
-    rhythms = train_dataset.durations_decode(predictions)
+    pitches = train_dataset.pitches_decode(predictions)
     print "Predict:"
-    print rhythms
+    print pitches
 
-    for i in range(len(rhythms)):
+    for i in range(len(pitches)):
+        pitch = pitches[i]
+        if len(pitch) == 2:
+            pitch_xml = """<step>%s</step>
+                    <octave>%s</octave>""" % (pitch[0], pitch[1])
+        elif len(pitch) == 3:
+            pitch_xml = """<step>%s</step>
+                    <octave>%s</octave>
+                    <alter>%s</alter>""" % (pitch[0], pitch[2], "-1" if pitch[1] == "b" else "1")
+        else:
+            raise NotImplementedError
+
         output += """<measure number="%s">
             <attributes>
                 <divisions>26880</divisions>
             </attributes>
             <note default-y="-30.00" default-x="12.00">
-                <pitch>
-                    <step>G</step>
-                    <octave>4</octave>
-                </pitch>
+                <pitch>%s</pitch>
                 <duration>%s</duration>
                 <voice>1</voice>
                 <stem>up</stem>
@@ -161,7 +175,7 @@ def gen():
                     <extend/>
                 </lyric>
             </note>
-        </measure>""" % (i+2, rhythms[i], input_str_split[i], input_arr_decoded[i].replace("<", "&lt;").replace(">", "&gt;"))
+        </measure>""" % (i+2, pitch_xml, input_durations[i], input_str_split[i], input_str_arr_decoded[i].replace("<", "&lt;").replace(">", "&gt;"))
 
     output += """</part>
     </score-partwise>"""

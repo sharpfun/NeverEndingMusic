@@ -61,7 +61,7 @@ class T_H5PYDataset(H5PYDataset):
         return self._syllables_vocab
 
     def syllables_encode(self, txt):
-        return [self._syllables_encode_dict[c] for c in txt]
+        return [self._syllables_encode_dict.get(c, self._syllables_encode_dict.get("<unk>")) for c in txt]
 
     def syllables_decode(self, code):
         return [self._syllables_decode_dict[i] for i in code]
@@ -182,7 +182,7 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
 
 
 if __name__ == "__main__":
-    createH5Dataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5', 'dataset/normalized_syllables_rhythm_notes.json', 100)
+    #createH5Dataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5', 'dataset/normalized_syllables_rhythm_notes.json', 100)
     ds = T_H5PYDataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5', which_sets=('train',))
     print ds.syllables_vocab()
 

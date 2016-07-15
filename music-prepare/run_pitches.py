@@ -19,14 +19,14 @@ source_path = 'dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5'
 train_dataset = T_H5PYDataset(source_path, which_sets=('train',))
 
 
-hidden_layer_dim = 1000
+hidden_layer_dim = 200
 
-x = tensor.lmatrix('syllables')
-y = tensor.lmatrix('durations')
+x = tensor.lmatrix('durations')
+y = tensor.lmatrix('pitches')
 
 lookup_input = LookupTable(
     name='lookup_input',
-    length=train_dataset.syllables_vocab_size()+1,
+    length=train_dataset.durations_vocab_size()+1,
     dim=hidden_layer_dim,
     weights_init=initialization.Uniform(width=0.01),
     biases_init=Constant(0))
@@ -50,7 +50,7 @@ rnn.initialize()
 linear_output = Linear(
     name='linear_output',
     input_dim=hidden_layer_dim,
-    output_dim=train_dataset.durations_vocab_size(),
+    output_dim=train_dataset.pitches_vocab_size(),
     weights_init=initialization.Uniform(width=0.01),
     biases_init=Constant(0))
 linear_output.initialize()
@@ -95,7 +95,7 @@ main_loop = MainLoop(
     algorithm=algorithm,
     data_stream=DataStream.default_stream(
         dataset=train_dataset,
-        iteration_scheme=SequentialScheme(train_dataset.num_examples, batch_size=100)
+        iteration_scheme=SequentialScheme(train_dataset.num_examples, batch_size=20)
     ),
     model=Model(y_est),
     extensions=[
@@ -108,7 +108,7 @@ main_loop = MainLoop(
         ),
         Printing(),
         ProgressBar(),
-        Checkpoint(path="./checkpoint.zip")
+        Checkpoint(path="./checkpoint-pitches.zip")
     ]
 )
 
