@@ -2,6 +2,8 @@ __author__ = 'Steffen'
 
 from blocks.bricks.recurrent import LSTM, RecurrentStack
 from blocks.bricks import Tanh, Linear, NDimensionalSoftmax
+from blocks import initialization
+from blocks.initialization import Constant
 from blocks.bricks.lookup import LookupTable
 from blocks.bricks.parallel import Merge
 from blocks.graph import ComputationGraph
@@ -12,6 +14,8 @@ from fuel.streams import DataStream
 from fuel.schemes import SequentialScheme
 from blocks.extensions import Printing, FinishAfter
 from blocks.extensions.saveload import Checkpoint
+from blocks.bricks.cost import CategoricalCrossEntropy
+import numpy
 
 from theano import tensor
 
@@ -24,29 +28,41 @@ class ParallelCharModel:
         self.lookup1_dim = lookup1_dim
         self.lookup2_dim = lookup2_dim
 
-        x1 = tensor.imatrix('durations')
-        x2 = tensor.imatrix('syllables')
-        y = tensor.imatrix('pitches')
+        x1 = tensor.lmatrix('durations')
+        x2 = tensor.lmatrix('syllables')
+        y = tensor.lmatrix('pitches')
 
-        lookup1 = LookupTable(dim=self.lookup1_dim, length=self.input1_size, name='lookup1')
-        lookup2 = LookupTable(dim=self.lookup2_dim, length=self.input2_size, name='lookup2')
-        l1 = lookup1.apply(x1)
-        l2 = lookup2.apply(x2)
-
-        merge = Merge(['lookup1', 'lookup2'], [self.lookup1_dim, self.lookup2_dim], self.hidden_size)
-        m = merge.apply(l1, l2)
-
-        recurrent_block = LSTM(dim=self.hidden_size, activation=Tanh()) #RecurrentStack([LSTM(dim=self.hidden_size, activation=Tanh())] * 3)
-        h = recurrent_block.apply(m)
-
-        linear = Linear(input_dim=self.hidden_size, output_dim=self.input1_size)
-        a = linear.apply(h)
-
+        lookup1 = LookupTable(dim=self.lookup1_dim, length=self.input1_size, name='lookup1',
+                              weights_init=initialization.Uniform(width=0.01),
+                              biases_init=Constant(0))
+        lookup1.initialize()
+        lookup2 = LookupTable(dim=self.lookup2_dim, length=self.input2_size, name='lookup2',
+                              weights_init=initialization.Uniform(width=0.01),
+                              biases_init=Constant(0))
+        lookup2.initialize()
+        merge = Merge(['lookup1', 'lookup2'], [self.lookup1_dim, self.lookup2_dim], self.hidden_size,
+                              weights_init=initialization.Uniform(width=0.01),
+                              biases_init=Constant(0))
+        merge.initialize()
+        recurrent_block = LSTM(dim=self.hidden_size, activation=Tanh(),
+                              weights_init=initialization.Uniform(width=0.01)) #RecurrentStack([LSTM(dim=self.hidden_size, activation=Tanh())] * 3)
+        recurrent_block.initialize()
+        linear = Linear(input_dim=self.hidden_size, output_dim=self.input1_size,
+                              weights_init=initialization.Uniform(width=0.01),
+                              biases_init=Constant(0))
+        linear.initialize()
         softmax = NDimensionalSoftmax()
 
-        y_hat = softmax.apply(a, extra_ndim=2)
+        l1 = lookup1.apply(x1)
+        l2 = lookup2.apply(x2)
+        m = merge.apply(l1, l2)
+        h = recurrent_block.apply(m)
+        a = linear.apply(h)
 
-        self.Cost = softmax.categorical_cross_entropy(y, a).mean()
+        y_hat = softmax.apply(a, extra_ndim=1)
+        # ValueError: x must be 1-d or 2-d tensor of floats. Got TensorType(float64, 3D)
+
+        self.Cost = softmax.categorical_cross_entropy(y, a, extra_ndim=1).mean()
 
         self.ComputationGraph = ComputationGraph(self.Cost)
 
@@ -58,8 +74,7 @@ class ParallelCharModel:
 
         algorithm = GradientDescent(cost=self.Cost,
                                     parameters=self.ComputationGraph.parameters,
-                                    step_rule=CompositeRule(step_rules),
-                                    on_unused_sources='ignore')
+                                    step_rule=CompositeRule(step_rules))
 
         train_stream = DataStream.default_stream(
             training_data, iteration_scheme=SequentialScheme(
