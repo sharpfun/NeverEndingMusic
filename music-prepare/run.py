@@ -12,35 +12,23 @@ from fuel.datasets.hdf5 import H5PYDataset
 import h5py
 import json
 from blocks.algorithms import StepClipping, GradientDescent, CompositeRule, RMSProp
+from dataset import T_H5PYDataset
 
 
-source_path = 'dataset/finalfile-seqlen-100.hdf5'
+source_path = 'dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5'
 
 
-with h5py.File(source_path) as f:
-    charset_size = len(json.loads(f.attrs['index_to_char']))
-    instances_num = f['x'].shape[0]
-
-
-class MyDataset(H5PYDataset):
-    def get_data(self, state=None, request=None):
-        data = list(super(MyDataset, self).get_data(state, request))
-        data[0] = data[0].T
-        data[1] = data[1].T
-        return tuple(data)
-
-
-train_dataset = MyDataset(source_path, which_sets=('train',))
+train_dataset = T_H5PYDataset(source_path, which_sets=('train',))
 
 
 hidden_layer_dim = 1000
 
-x = tensor.lmatrix('x')
-y = tensor.lmatrix('y')
+x = tensor.lmatrix('syllables')
+y = tensor.lmatrix('durations')
 
 lookup_input = LookupTable(
     name='lookup_input',
-    length=charset_size+1,
+    length=train_dataset.syllables_vocab_size()+1,
     dim=hidden_layer_dim,
     weights_init=initialization.Uniform(width=0.01),
     biases_init=Constant(0))
@@ -64,7 +52,7 @@ rnn.initialize()
 linear_output = Linear(
     name='linear_output',
     input_dim=hidden_layer_dim,
-    output_dim=charset_size,
+    output_dim=train_dataset.durations_vocab_size(),
     weights_init=initialization.Uniform(width=0.01),
     biases_init=Constant(0))
 linear_output.initialize()
@@ -90,7 +78,8 @@ step_rules = [RMSProp(learning_rate=0.002, decay_rate=0.95), StepClipping(1.0)]
 algorithm = GradientDescent(
     cost=cost,
     parameters=cg.parameters,
-    step_rule=CompositeRule(step_rules)
+    step_rule=CompositeRule(step_rules),
+    on_unused_sources='ignore'
 )
 
 
@@ -108,7 +97,7 @@ main_loop = MainLoop(
     algorithm=algorithm,
     data_stream=DataStream.default_stream(
         dataset=train_dataset,
-        iteration_scheme=SequentialScheme(train_dataset.num_examples, batch_size=10)
+        iteration_scheme=SequentialScheme(train_dataset.num_examples, batch_size=100)
     ),
     model=Model(y_est),
     extensions=[
