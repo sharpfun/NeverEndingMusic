@@ -70,7 +70,7 @@ from blocks.algorithms import GradientDescent, Adam
 
 cg = ComputationGraph([cost])
 
-step_rules = [RMSProp(learning_rate=0.002, decay_rate=0.95), StepClipping(1.0)]
+step_rules = [RMSProp(learning_rate=0.02, decay_rate=0.75), StepClipping(1.0)]
 
 
 algorithm = GradientDescent(
