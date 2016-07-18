@@ -187,8 +187,8 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
 
 
 if __name__ == "__main__":
-    createH5Dataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5', 'dataset/normalized_syllables_rhythm_notes.json', 30)
-    ds = T_H5PYDataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5', which_sets=('train',))
+    createH5Dataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-30.hdf5', 'dataset/normalized_syllables_rhythm_notes.json', 30)
+    ds = T_H5PYDataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-30.hdf5', which_sets=('train',))
     print ds.syllables_vocab()
 
 #train_data = H5PYDataset('dataset.hdf5', which_sets=('train',), load_in_memory=True)

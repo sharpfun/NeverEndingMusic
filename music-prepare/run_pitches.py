@@ -13,7 +13,7 @@ from blocks.algorithms import StepClipping, GradientDescent, CompositeRule, RMSP
 from dataset import T_H5PYDataset
 
 
-source_path = 'dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5'
+source_path = 'dataset/normalized_syllables_rhythm_notes.json-seqlen-30.hdf5'
 
 
 train_dataset = T_H5PYDataset(source_path, which_sets=('train',))
