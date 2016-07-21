@@ -8,7 +8,7 @@ d = enchant.Dict("en_US")
 
 #folder = "/home/kroman/Downloads/nn/Wikifonia/Arrangement by John & Annie - Advent medley 2.mxl_FILES/"
 #folder = "/home/kroman/Downloads/nn/Wikifonia/"
-folder = 'C:\Users\Steffen\NeverEndingMusic\NeverEndingMusic\music_prepare\Wikifonia\'
+folder = 'C:\\Users\\Steffen\\NeverEndingMusic\\NeverEndingMusic\\music_prepare\\Wikifonia\\'
 
 all_notes = []
 seq_len = 100
@@ -121,7 +121,10 @@ def mxml_parse_syllables_rhythm_pitch(xml, file_path):
     durations_arr = []
     pitches_arr = []
 
-    fifths = xml.find(name="key").fifths.text
+    try:
+        fifths = xml.find(name="key").fifths.text
+    except AttributeError:
+        fifths = 0
 
     for note in xml.find_all(name="note"):
         lyric = note.find(name="lyric", attrs={"number": "1"})
