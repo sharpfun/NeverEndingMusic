@@ -7,7 +7,8 @@ import shutil
 d = enchant.Dict("en_US")
 
 #folder = "/home/kroman/Downloads/nn/Wikifonia/Arrangement by John & Annie - Advent medley 2.mxl_FILES/"
-folder = "/home/kroman/Downloads/nn/Wikifonia/"
+#folder = "/home/kroman/Downloads/nn/Wikifonia/"
+folder = 'C:\Users\Steffen\NeverEndingMusic\NeverEndingMusic\music_prepare\Wikifonia\'
 
 all_notes = []
 seq_len = 100
@@ -113,6 +114,17 @@ def mxml_delete_non_english_songs(xml, file_path):
 
 json_arr = []
 
+note_to_val = {'A': 0, 'A#': 1, 'Bb': 1, 'B': 2, 'Cb': 2, 'C': 3, 'B#': 3, 'C#': 4, 'Db': 4, 'D': 5, 'D#': 6,
+               'Eb': 6, 'E': 7, 'Fb': 7, 'E#': 8, 'F': 8, 'F#': 9, 'Gb': 9, 'G': 10, 'G#': 11, 'Ab': 11}
+val_to_note = {0: 'A', 1: 'Bb', 2: 'B', 3: 'C', 4: 'C#', 5: 'D', 6: 'Eb', 7: 'E', 8: 'F', 9: 'F#', 10: 'G', 11: 'G#'}
+
+def transpose(fifths, note, octave):
+    note_val = note_to_val[note]
+    new_octave = octave
+    if note_val + ((fifths * 7) % 12) > 11:
+        new_octave = octave + 1
+    new_note_val = (note_val + fifths * 7) % 12
+    return val_to_note[new_note_val % 12] + str(new_octave)
 
 def mxml_parse_syllables_rhythm_pitch(xml, file_path):
     print file_path
@@ -120,6 +132,8 @@ def mxml_parse_syllables_rhythm_pitch(xml, file_path):
     syllables_arr = []
     durations_arr = []
     pitches_arr = []
+
+    fifths = int(xml.find(name="key").fifths.text)
 
     for note in xml.find_all(name="note"):
         lyric = note.find(name="lyric", attrs={"number": "1"})
@@ -137,7 +151,7 @@ def mxml_parse_syllables_rhythm_pitch(xml, file_path):
                 alter = 'b'
             if note.pitch.alter.text == '1':
                 alter = '#'
-        pitch = note.pitch.step.text + alter + note.pitch.octave.text
+        pitch = transpose(fifths, note.pitch.step.text + alter, note.pitch.octave.text)
 
         syllables_arr.append(syllable)
         durations_arr.append(int(duration))
