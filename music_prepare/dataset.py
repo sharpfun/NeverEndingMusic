@@ -197,10 +197,10 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
 
         fout.attrs['split'] = H5PYDataset.create_split_array(split_dict)
 
-        fout.attrs["durations_vocab"] = json.dumps(list(durations_vocab))
-        fout.attrs["syllables_vocab"] = json.dumps(list(syllables_vocab))
-        fout.attrs["pitches_vocab"] = json.dumps(list(pitches_vocab))
-        fout.attrs["stress_vocab"] = json.dumps(list(stress_vocab))
+        fout.attrs["durations_vocab"] = json.dumps(list(durations_vocab), default=lambda x: None)
+        fout.attrs["syllables_vocab"] = json.dumps(list(syllables_vocab), default=lambda x: None)
+        fout.attrs["pitches_vocab"] = json.dumps(list(pitches_vocab), default=lambda x: None)
+        fout.attrs["stress_vocab"] = json.dumps(list(stress_vocab), default=lambda x: None)
 
         fout.flush()
         fout.close()
