@@ -1,5 +1,7 @@
 import re
 import json
+from CMUDict import CmuDict
+
 
 file_path = "dataset/syllables_rhythm_notes.json"
 normalized_outfile = 'dataset/normalized_syllables_rhythm_notes.json'
@@ -8,7 +10,7 @@ divisions_set = set()
 
 
 def clean_word(source):
-    return "".join(re.findall("[a-z]+", source.lower()))
+    return "".join(re.findall("[a-z\-]+", source.lower()))
 
 
 def lcm(x, y):
@@ -30,6 +32,9 @@ with open(file_path) as f:
     lcm_division = lcmm(list(divisions_set))
 
     new_sheets = []
+
+    cmudict = CmuDict()
+
     for sheet in sheets:
         new_durations = []
         new_syllables = []
@@ -47,6 +52,7 @@ with open(file_path) as f:
             "syllables": new_syllables,
             "durations": new_durations,
             "pitches": new_pitches,
+            "stress": list(cmudict.stress_syllable_list(new_syllables)),
             "duration_divisions": lcm_division,
             "file_path": sheet["file_path"]
         })

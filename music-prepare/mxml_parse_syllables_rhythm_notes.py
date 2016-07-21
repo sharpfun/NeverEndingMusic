@@ -126,6 +126,10 @@ def mxml_parse_syllables_rhythm_pitch(xml, file_path):
         if not lyric or not lyric.find("text") or not note.pitch or not note.duration:
             continue
         syllable = clean_word(lyric.find("text").text, True)
+        if lyric.syllabic and lyric.syllabic.text in ['begin', 'middle']:
+            if not syllable.strip().endswith('-'):
+                syllable += '-'
+
         duration = note.duration.text
         alter = ''
         if note.pitch.alter:
