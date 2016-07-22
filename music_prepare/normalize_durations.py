@@ -29,13 +29,17 @@ val_to_note = {0: 'A', 1: 'Bb', 2: 'B', 3: 'C', 4: 'C#', 5: 'D', 6: 'Eb', 7: 'E'
 
 def transpose(fifths, note):
     note_name = note[:-1]
-    octave = note[-1]
+    octave = int(note[-1])
     note_val = note_to_val[note_name]
+
+    shift_by = - ((int(fifths) * 7) % 12)
+    new_note_val = (note_val + shift_by) % 12
+
     new_octave = int(octave)
-    if note_val + ((fifths * 7) % 12) > 11:
-        new_octave = new_octave + 1
-    new_note_val = (note_val + fifths * 7) % 12
-    return val_to_note[new_note_val % 12] + str(new_octave)
+    if note_val + shift_by - 3 < 0 and note_val >= 3:
+        new_octave -= 1
+
+    return val_to_note[new_note_val] + str(new_octave)
 
 with open(file_path) as f:
     sheets = json.loads(f.read())

@@ -104,7 +104,8 @@ class MusicRNNModel:
 
             algorithm = GradientDescent(cost=self.Cost,
                                         parameters=self.ComputationGraph.parameters,
-                                        step_rule=CompositeRule(step_rules))
+                                        step_rule=CompositeRule(step_rules),
+                                        on_unused_sources='ignore')
 
             train_stream = DataStream.default_stream(
                 training_data, iteration_scheme=SequentialScheme(
@@ -115,7 +116,7 @@ class MusicRNNModel:
                 data_stream=train_stream,
                 algorithm=algorithm,
                 extensions=[
-                    FinishAfter(after_n_epochs=195),
+                    FinishAfter(),
                     Printing(),
                     Checkpoint('trainingdata_pitches.tar', every_n_epochs=10),
                     TrainingDataMonitoring([self.Cost], after_batch=True, prefix='train'),
