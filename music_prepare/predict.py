@@ -27,7 +27,7 @@ def gen(train_dataset, input_syllables):
         (tensor_initial, tensor_hidden_states[0][0]),
     ])
 
-    input_syllables_encoded = train_dataset.syllables_encode(input_syllables.split("-"))
+    input_syllables_encoded = train_dataset.syllables_encode(input_syllables.split("|"))
 
     print "encoded syllables:"
     print input_syllables_encoded
@@ -52,9 +52,9 @@ def gen_xml():
 
     train_dataset = T_H5PYDataset(source_path, which_sets=('train',))
 
-    input_syllables = "love-looks-not-with-the-eyes-but-with-the-mind-and-there-fore-is-winged-cupid-pain-ted-blind"
+    input_syllables = 'love|looks|not|with|the|eyes|but|with|the|mind|and|there-|fore|is|winged|cupid|pain|ted|blind'
 
-    input_syllables_split = input_syllables.split("-")
+    input_syllables_split = input_syllables.split("|")
 
     input_syllables_encoded = train_dataset.syllables_encode(input_syllables_split)
 
