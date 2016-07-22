@@ -60,6 +60,8 @@ class T_H5PYDataset(H5PYDataset):
         data[1] = data[1].T
         data[2] = data[2].T
         data[3] = data[3].T
+        data[4] = data[4].T
+        data[5] = data[5].T
         return tuple(data)
 
     def syllables_vocab_size(self):
