@@ -116,7 +116,7 @@ class MusicRNNModel:
                 data_stream=train_stream,
                 algorithm=algorithm,
                 extensions=[
-                    FinishAfter(after_n_epochs=195),
+                    FinishAfter(),
                     Printing(),
                     Checkpoint('trainingdata_pitches.tar', every_n_epochs=10),
                     TrainingDataMonitoring([self.Cost], after_batch=True, prefix='train'),
