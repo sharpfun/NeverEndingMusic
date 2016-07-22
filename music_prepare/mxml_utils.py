@@ -1,4 +1,4 @@
-def create_mxml(syllables, syllables_decoded, durations, pitches):
+def create_mxml(syllables, syllables_decoded, durations, pitches, durations_division_size=26880):
     output = """<?xml version="1.0" encoding="UTF-8"?>
     <!DOCTYPE score-partwise PUBLIC "-//Recordare//DTD MusicXML 2.0 Partwise//EN" "http://www.musicxml.org/dtds/partwise.dtd">
     <score-partwise version="2.0">
@@ -98,13 +98,44 @@ def create_mxml(syllables, syllables_decoded, durations, pitches):
         else:
             raise NotImplementedError
 
+        duration_type_list = {
+            'long': 16,
+            'breve': 8,
+            'whole': 4,
+            'half': 2,
+            'quarter': 1,
+            'eighth': 0.5,
+            '16th': 0.25,
+            '32nd': 0.125,
+            '64th': 0.625,
+            '128th': 0.03125,
+            '256th': 0.015625
+        }
+
+        duration_type_xml = ''
+
+        current_duration = float(durations[i])
+
+        for key, value in duration_type_list.iteritems():
+            if current_duration/durations_division_size == value:
+                duration_type_xml = '<type>%s</type>' % key
+            elif current_duration / durations_division_size == value * 1.5:
+                duration_type_xml = '<type>%s</type><dot/>' % key
+            elif current_duration / durations_division_size == value * 1.75:
+                duration_type_xml = '<type>%s</type><dot/><dot/>' % key
+            elif (current_duration*1.5) / durations_division_size == value:
+                duration_type_xml = '<type>%s</type><time-modification><actual-notes>3</actual-notes><normal-notes>2</normal-notes></time-modification>' % key
+            if duration_type_xml != '':
+                break
+
         output += """<measure number="%s">
             <attributes>
-                <divisions>26880</divisions>
+                <divisions>%s</divisions>
             </attributes>
             <note default-y="-30.00" default-x="12.00">
                 <pitch>%s</pitch>
                 <duration>%s</duration>
+                %s
                 <voice>1</voice>
                 <stem>up</stem>
                 <lyric number="1">
@@ -116,7 +147,7 @@ def create_mxml(syllables, syllables_decoded, durations, pitches):
                     <extend/>
                 </lyric>
             </note>
-        </measure>""" % (i+2, pitch_xml, durations[i], syllables[i], syllables_decoded[i].replace("<", "&lt;").replace(">", "&gt;"))
+        </measure>""" % (i+2, durations_division_size, pitch_xml, durations[i], duration_type_xml, syllables[i], syllables_decoded[i].replace("<", "&lt;").replace(">", "&gt;"))
 
     output += """</part>
     </score-partwise>"""
