@@ -73,7 +73,6 @@ class T_H5PYDataset(H5PYDataset):
         return self._durations_vocab
 
     def durations_encode(self, txt):
-        print self._durations_encode_dict
         return [self._durations_encode_dict[c] for c in txt]
 
     def durations_decode(self, code):
