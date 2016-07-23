@@ -10,10 +10,6 @@ d = enchant.Dict("en_US")
 #folder = "/home/kroman/Downloads/nn/Wikifonia/"
 folder = 'C:\\Users\\Steffen\\NeverEndingMusic\\NeverEndingMusic\\music_prepare\\Wikifonia\\'
 
-all_notes = []
-seq_len = 100
-prepared_corpus_out = 'wikifonia-seqlen-100.txt'
-
 
 def clean_word(source, extra_clean=False):
     if extra_clean:
