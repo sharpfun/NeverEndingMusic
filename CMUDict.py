@@ -8,6 +8,14 @@ from nltk.tokenize import word_tokenize
 class CmuDict:
     def __init__(self):
         self.dict = cmudict.dict()
+        self.unknown_dict = {}
+        for key in self.dict.keys():
+            if "'" in key:
+                self.unknown_dict[key.replace("'", '')] = key
+            if key.endswith('ing'):
+                self.unknown_dict[key.replace('ing', 'in')] = key
+            if 'every' in key:
+                self.unknown_dict[key.replace('every', 'evry')] = key
 
     def stress(self, word):
         lowercase = word.replace('-', '').lower().rstrip(string.punctuation)
@@ -15,6 +23,9 @@ class CmuDict:
             return '4'
         if lowercase in self.dict:
             out = ''.join(self.dict[lowercase][0])
+            out = re.sub(r'[^0-9]', '', out)
+        elif lowercase in self.unknown_dict:
+            out = ''.join(self.dict[self.unknown_dict[lowercase]][0])
             out = re.sub(r'[^0-9]', '', out)
         else:
             print lowercase

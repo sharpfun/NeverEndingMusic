@@ -20,9 +20,7 @@ from blocks.extensions.monitoring import TrainingDataMonitoring, DataStreamMonit
 from blocks_extras.extensions.plot import Plot
 
 
-import h5py
 import theano
-from blocks.bricks.cost import CategoricalCrossEntropy
 import numpy
 from music_prepare import dataset
 from theano import tensor
@@ -168,16 +166,16 @@ class MusicNetwork:
         self.PitchesVocabSize = ds.pitches_vocab_size()
         self.StressesVocabSize = 5
 
-        self.PitchModel = MusicRNNModel(['durations', 'stress'],
-                                        [self.DurationsVocabSize, self.StressesVocabSize],
+        self.PitchModel = MusicRNNModel(['durations', 'stress', 'pitches_shift'],
+                                        [self.DurationsVocabSize, self.StressesVocabSize, self.PitchesVocabSize],
                                          'pitches', self.PitchesVocabSize)
 
-        self.RhythmModel = MusicRNNModel(['stress'], [self.StressesVocabSize], 'durations', self.DurationsVocabSize)
+        self.RhythmModel = MusicRNNModel(['stress', 'durations_shift'], [self.StressesVocabSize, self.DurationsVocabSize], 'durations', self.DurationsVocabSize)
 
     def load(self):
+        self.RhythmModel.load('trainingdata_rhythm.tar')
         self.PitchModel.load('trainingdata_pitches.tar')
-        #self.RhythmModel.load('trainingdata_rhythm.tar')
 
-    def sample(self, inputs_list):
+    def sample(self, input_text):
         #rhythm_out = self.RhythmModel.sample([])
         return self.PitchModel.sample(inputs_list)
