@@ -1,7 +1,6 @@
 __author__ = 'Steffen'
 
-from model import MusicRNNModel
+from model import MusicNetwork
 
-m = MusicRNNModel('normalized_syllables_rhythm_notes.json-seqlen-100.hdf5')
-m.initialize_pitch_model()
-m.train_pitch()
+m = MusicNetwork('normalized_syllables_rhythm_notes.json-seqlen-100.hdf5')
+m.PitchModel.train('normalized_syllables_rhythm_notes.json-seqlen-100.hdf5', 'trainingdata_pitches.tar')
