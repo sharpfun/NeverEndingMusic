@@ -27,7 +27,7 @@ def iterate_over_all_music_files(xml_parser):
         for xml_file in files:
             if xml_file.endswith(".xml"):
                 file_path = os.path.join(root, xml_file)
-                with open(file_path) as f:
+                with codecs.open(file_path, 'r', encoding='utf-8') as f:
                     xml = bs(f.read(), "xml")
 
                     xml_parser(xml, file_path)
