@@ -32,6 +32,10 @@ class T_H5PYDataset(H5PYDataset):
     _pitches_decode_dict = {}
     _pitches_vocab = []
 
+    _phrase_encode_dict = {}
+    _phrase_decode_dict = {}
+    _phrase_vocab = []
+
     def __init__(self, file_or_path, which_sets, subset=None,
                  load_in_memory=False, driver=None, sort_indices=True,
                  **kwargs):
@@ -54,6 +58,10 @@ class T_H5PYDataset(H5PYDataset):
             self._pitches_encode_dict = {word: idx for idx, word in enumerate(self._pitches_vocab)}
             self._pitches_decode_dict = {idx: word for idx, word in enumerate(self._pitches_vocab)}
 
+            self._phrase_vocab = json.loads(f.attrs['phrase_vocab'])
+            self._phrase_encode_dict = {word: idx for idx, word in enumerate(self._phrase_vocab)}
+            self._phrase_decode_dict = {idx: word for idx, word in enumerate(self._phrase_vocab)}
+
     def get_data(self, state=None, request=None):
         data = list(super(T_H5PYDataset, self).get_data(state, request))
         data[0] = data[0].T
@@ -69,6 +77,18 @@ class T_H5PYDataset(H5PYDataset):
 
     def syllables_vocab(self):
         return self._syllables_vocab
+
+    def phrase_vocab(self):
+        return self._phrase_vocab
+
+    def phrase_vocab_size(self):
+        return len(self._phrase_vocab)
+
+    def phrase_idx_encode(self, txt):
+        return [self._syllables_encode_dict.get(c, self._phrase_encode_dict.get(0)) for c in txt]
+
+    def phrase_idx_decode(self, code):
+        return [self._phrase_decode_dict[i] for i in code]
 
     def syllables_encode(self, txt):
         return [self._syllables_encode_dict.get(c, self._syllables_encode_dict.get("<unk>")) for c in txt]
@@ -102,6 +122,9 @@ class T_H5PYDataset(H5PYDataset):
 
     def pitches_vocab_size(self):
         return len(self._pitches_vocab)
+
+    def phrase_index_vocab_size(self):
+        return len(self._)
 
     def pitches_vocab(self):
         return self._pitches_vocab
@@ -145,6 +168,8 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
         all_syllables = []
         all_pitches = []
         all_stress = []
+        all_begin_idx = []
+        all_end_idx = []
 
         """for sheet in sheets:
             upto = sequence_length*(len(sheet["durations"])/sequence_length)
@@ -162,6 +187,8 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
             all_syllables += sheet["syllables"] + ["<end_file>"]
             all_pitches += sheet["pitches"] + ["R"]
             all_stress += sheet["stress"] + ["_"]
+            all_begin_idx += [x if x <= 10 else 10 for x in sheet["phrase_begin_index"] + [0]]
+            all_end_idx += [x if x <= 10 else 10 for x in sheet["phrase_end_index"] + [0]]
 
         print durations_set
         print len(durations_set)
@@ -186,6 +213,8 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
         train_data_pitches = np.zeros((instances_num, sequence_length), dtype=np.uint16)
         train_data_pitches_shift = np.zeros((instances_num, sequence_length), dtype=np.uint16)
         train_data_stress = np.zeros((instances_num, sequence_length), dtype=np.uint16)
+        train_data_begin_idx = np.zeros((instances_num, sequence_length), dtype=np.uint16)
+        train_data_end_idx = np.zeros((instances_num, sequence_length), dtype=np.uint16)
 
         for j in range(instances_num):
             for i in range(sequence_length):
@@ -195,6 +224,8 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
                 train_data_pitches[j][i] = pitches_indices[i + j * sequence_length]
                 train_data_pitches_shift[j][i] = pitches_indices[i + j * sequence_length + 1]
                 train_data_stress[j][i] = stress_indices[i + j * sequence_length]
+                train_data_begin_idx[j][i] = all_begin_idx[i + j * sequence_length]
+                train_data_end_idx[j][i] = all_end_idx[i + j * sequence_length]
 
         note_durations = fout.create_dataset('durations', train_data_durations.shape, dtype='uint16')
         note_durations_shift = fout.create_dataset('durations_shift', train_data_durations.shape, dtype='uint16')
@@ -202,6 +233,8 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
         note_pitches = fout.create_dataset('pitches', train_data_syllables.shape, dtype='uint16')
         note_pitches_shift = fout.create_dataset('pitches_shift', train_data_syllables.shape, dtype='uint16')
         note_stress = fout.create_dataset('stress', train_data_stress.shape, dtype='uint16')
+        note_begin_idx = fout.create_dataset('phrase_begin_index', train_data_begin_idx.shape, dtype='uint16')
+        note_end_idx = fout.create_dataset('phrase_end_index', train_data_end_idx.shape, dtype='uint16')
 
         note_durations[...] = train_data_durations
         note_durations_shift[...] = train_data_durations_shift
@@ -209,6 +242,8 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
         note_pitches[...] = train_data_pitches
         note_pitches_shift[...] = train_data_pitches_shift
         note_stress[...] = train_data_stress
+        note_begin_idx[...] = train_data_begin_idx
+        note_end_idx[...] = train_data_end_idx
 
         split_num = int(instances_num * 0.7)
 
@@ -219,14 +254,18 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
                 'syllables': (0, split_num),
                 'pitches': (0, split_num),
                 'pitches_shift': (0, split_num),
-                'stress': (0, split_num)},
+                'stress': (0, split_num),
+                'phrase_begin_index': (0, split_num),
+                'phrase_end_index': (0, split_num)},
             'test': {
                 'durations': (split_num+1, instances_num),
                 'durations_shift': (split_num+1, instances_num),
                 'syllables': (split_num+1, instances_num),
                 'pitches': (split_num+1, instances_num),
                 'pitches_shift': (split_num+1, instances_num),
-                'stress': (split_num+1, instances_num)}
+                'stress': (split_num+1, instances_num),
+                'phrase_begin_index': (split_num+1, instances_num),
+                'phrase_end_index': (split_num+1, instances_num)}
         }
 
         fout.attrs['split'] = H5PYDataset.create_split_array(split_dict)
@@ -236,6 +275,7 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
         fout.attrs["syllables_vocab"] = json.dumps(list(syllables_vocab))
         fout.attrs["pitches_vocab"] = json.dumps(list(pitches_vocab))
         fout.attrs["stress_vocab"] = json.dumps(list(stress_vocab))
+        fout.attrs["phrase_vocab"] = json.dumps(range(11))
 
         fout.flush()
         fout.close()

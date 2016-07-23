@@ -17,6 +17,8 @@ from blocks.extensions.saveload import Checkpoint, load
 from fuel.datasets.hdf5 import H5PYDataset
 from blocks.extensions.monitoring import TrainingDataMonitoring, DataStreamMonitoring
 
+from CMUDict import CmuDict
+
 from blocks_extras.extensions.plot import Plot
 
 
@@ -83,7 +85,7 @@ class MusicRNNModel:
                               weights_init=initialization.Uniform(width=0.01),
                               biases_init=Constant(0)) for index, vocab in enumerate(vocab_list)]
 
-    def train(self, data_file, output_data_file):
+    def train(self, data_file, output_data_file, n_epochs=0):
 
         training_data = H5PYDataset(data_file, which_sets=('train',))
         test_data = H5PYDataset(data_file, which_sets=('test',))
@@ -112,7 +114,7 @@ class MusicRNNModel:
                 data_stream=train_stream,
                 algorithm=algorithm,
                 extensions=[
-                    FinishAfter(after_n_epochs=1280),
+                    FinishAfter(after_n_epochs=n_epochs),
                     Printing(),
                     Checkpoint(output_data_file, every_n_epochs=50),
                     TrainingDataMonitoring([self.Cost], after_batch=True, prefix='train'),
@@ -142,13 +144,13 @@ class MusicRNNModel:
         output = []
         out = 0
 
-        for tup in zip(inputs_list):
+        for tup in zip(*inputs_list):
             new_tup = ()
             for p in tup:
                 new_tup += ([[p]],)
-            new_tup += (out,)
+            new_tup += ([[out]],)
             dist = numpy.exp(self.Function(*new_tup)[0])
-            out = numpy.random.choice(self.PitchesVocabSize, 1, p=dist)[0]
+            out = numpy.random.choice(self.OutputSourceVocab, 1, p=dist)[0]
             output.append(out)
 
         return output
@@ -160,22 +162,54 @@ class MusicNetwork:
 
         self.TrainingDataFile = training_data_file
 
-        ds = dataset.T_H5PYDataset(training_data_file, ('train',))
-        self.DurationsVocabSize = ds.durations_vocab_size()
-        self.SyllablesVocabSize = ds.syllables_vocab_size()
-        self.PitchesVocabSize = ds.pitches_vocab_size()
+        self.Dataset = dataset.T_H5PYDataset(training_data_file, ('train',))
+        self.DurationsVocabSize = self.Dataset.durations_vocab_size()
+        self.SyllablesVocabSize = self.Dataset.syllables_vocab_size()
+        self.PitchesVocabSize = self.Dataset.pitches_vocab_size()
+        self.PhraseVocabSize = self.Dataset.phrase_vocab_size()
         self.StressesVocabSize = 5
 
-        self.PitchModel = MusicRNNModel(['durations', 'stress', 'pitches_shift'],
-                                        [self.DurationsVocabSize, self.StressesVocabSize, self.PitchesVocabSize],
+        self.PitchModel = MusicRNNModel(['durations', 'stress', 'phrase_begin_index', 'phrase_end_index', 'pitches_shift'],
+                                        [self.DurationsVocabSize, self.StressesVocabSize, self.PhraseVocabSize,
+                                         self.PhraseVocabSize, self.PitchesVocabSize],
                                          'pitches', self.PitchesVocabSize)
 
-        self.RhythmModel = MusicRNNModel(['stress', 'durations_shift'], [self.StressesVocabSize, self.DurationsVocabSize], 'durations', self.DurationsVocabSize)
+        self.RhythmModel = MusicRNNModel(['stress', 'phrase_begin_index', 'phrase_end_index', 'durations_shift'],
+                                         [self.StressesVocabSize, self.PhraseVocabSize, self.PhraseVocabSize,
+                                          self.DurationsVocabSize],
+                                         'durations', self.DurationsVocabSize)
 
     def load(self):
         self.RhythmModel.load('trainingdata_rhythm.tar')
         self.PitchModel.load('trainingdata_pitches.tar')
 
     def sample(self, input_text):
-        #rhythm_out = self.RhythmModel.sample([])
-        return self.PitchModel.sample(inputs_list)
+        dict = CmuDict()
+        phrase_begin_idx = 0
+        phrase_begin_idx_list = []
+        sheet_phrase_begin_idx_list = []
+        sheet_phrase_end_idx_list = []
+        stress = []
+        syllables = []
+        for word in input_text.split(' '):
+            end_phrase_word = len(word) > 0 and word[-1] in ['.', ',', '?', '!', ';', ')', ']']
+            syllables.append(word)
+            for idx, x in enumerate(list(dict.stress(word).replace('4', '_'))):
+                stress += self.Dataset.stress_encode(x)
+                if idx > 0:
+                    syllables.append('')
+
+                phrase_begin_idx_list.append(phrase_begin_idx)
+                if end_phrase_word and idx == len(word) - 1:
+                    sheet_phrase_begin_idx_list += phrase_begin_idx_list
+                    sheet_phrase_end_idx_list += list(reversed(phrase_begin_idx_list))
+                    phrase_begin_idx_list = []
+                    phrase_begin_idx = -1
+                phrase_begin_idx += 1
+
+        sheet_phrase_begin_idx_list += phrase_begin_idx_list
+        sheet_phrase_end_idx_list += list(reversed(phrase_begin_idx_list))
+
+        rhythm_out = self.RhythmModel.sample([stress, sheet_phrase_begin_idx_list, sheet_phrase_end_idx_list])
+        pitches_out = self.PitchModel.sample([rhythm_out, stress, sheet_phrase_begin_idx_list, sheet_phrase_end_idx_list])
+        return self.Dataset.durations_decode(rhythm_out), self.Dataset.pitches_decode(pitches_out), syllables

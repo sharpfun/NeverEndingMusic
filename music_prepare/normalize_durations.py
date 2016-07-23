@@ -71,6 +71,8 @@ with open(file_path) as f:
             "pitches": new_pitches,
             "stress": list(cmudict.stress_syllable_list(new_syllables)),
             "fifths": sheet["fifths"],
+            "phrase_begin_index": sheet["phrase_begin_index"],
+            "phrase_end_index": sheet["phrase_end_index"],
             "duration_divisions": lcm_division,
             "file_path": sheet["file_path"]
         })

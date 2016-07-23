@@ -90,16 +90,16 @@
             <note default-y="-30.00" default-x="12.00">
                 <pitch><step>G</step>
                     <octave>4</octave></pitch>
-                <duration>6720</duration>
-                <type>16th</type>
+                <duration>40320</duration>
+                <type>quarter</type><dot/>
                 <voice>1</voice>
                 <stem>up</stem>
                 <lyric number="1">
-                    <text>we</text>
+                    <text>Happy</text>
                     <extend/>
                 </lyric>
                 <lyric number="2">
-                    <text>we</text>
+                    <text></text>
                     <extend/>
                 </lyric>
             </note>
@@ -110,16 +110,16 @@
             <note default-y="-30.00" default-x="12.00">
                 <pitch><step>G</step>
                     <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
+                <duration>13440</duration>
+                <type>eighth</type>
                 <voice>1</voice>
                 <stem>up</stem>
                 <lyric number="1">
-                    <text>are</text>
+                    <text></text>
                     <extend/>
                 </lyric>
                 <lyric number="2">
-                    <text>are</text>
+                    <text></text>
                     <extend/>
                 </lyric>
             </note>
@@ -128,18 +128,18 @@
                 <divisions>26880</divisions>
             </attributes>
             <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
+                <pitch><step>C</step>
                     <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
+                <duration>53760</duration>
+                <type>half</type>
                 <voice>1</voice>
                 <stem>up</stem>
                 <lyric number="1">
-                    <text>ac-</text>
+                    <text>birthday</text>
                     <extend/>
                 </lyric>
                 <lyric number="2">
-                    <text>ac-</text>
+                    <text></text>
                     <extend/>
                 </lyric>
             </note>
@@ -148,18 +148,18 @@
                 <divisions>26880</divisions>
             </attributes>
             <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
+                <pitch><step>C</step>
                     <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
+                <duration>26880</duration>
+                <type>quarter</type>
                 <voice>1</voice>
                 <stem>up</stem>
                 <lyric number="1">
-                    <text>count-</text>
+                    <text></text>
                     <extend/>
                 </lyric>
                 <lyric number="2">
-                    <text>count-</text>
+                    <text></text>
                     <extend/>
                 </lyric>
             </note>
@@ -170,16 +170,16 @@
             <note default-y="-30.00" default-x="12.00">
                 <pitch><step>C</step>
                     <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
+                <duration>26880</duration>
+                <type>quarter</type>
                 <voice>1</voice>
                 <stem>up</stem>
                 <lyric number="1">
-                    <text>ed</text>
+                    <text>to</text>
                     <extend/>
                 </lyric>
                 <lyric number="2">
-                    <text>ed</text>
+                    <text></text>
                     <extend/>
                 </lyric>
             </note>
@@ -188,18 +188,18 @@
                 <divisions>26880</divisions>
             </attributes>
             <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
+                <pitch><step>D</step>
                     <octave>4</octave></pitch>
                 <duration>13440</duration>
                 <type>eighth</type>
                 <voice>1</voice>
                 <stem>up</stem>
                 <lyric number="1">
-                    <text>poor</text>
+                    <text>you,</text>
                     <extend/>
                 </lyric>
                 <lyric number="2">
-                    <text>poor</text>
+                    <text></text>
                     <extend/>
                 </lyric>
             </note>
@@ -208,2510 +208,22 @@
                 <divisions>26880</divisions>
             </attributes>
             <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
+                <pitch><step>E</step>
                     <octave>4</octave></pitch>
                 <duration>13440</duration>
                 <type>eighth</type>
                 <voice>1</voice>
                 <stem>up</stem>
                 <lyric number="1">
-                    <text>cit-</text>
+                    <text>happy</text>
                     <extend/>
                 </lyric>
                 <lyric number="2">
-                    <text>cit-</text>
+                    <text></text>
                     <extend/>
                 </lyric>
             </note>
         </measure><measure number="9">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>6720</duration>
-                <type>16th</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>i-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>i-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="10">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>zens</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="11">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>6720</duration>
-                <type>16th</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>the</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>the</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="12">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>pa-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>pa-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="13">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>20160</duration>
-                <type>eighth</type><dot/>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>tri-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>tri-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="14">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>80640</duration>
-                <type>half</type><dot/>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>cians</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="15">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>good</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>good</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="16">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave>
-                    <alter>1</alter></pitch>
-                <duration>20160</duration>
-                <type>eighth</type><dot/>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>what</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>what</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="17">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>au-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>au-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="18">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>thor-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="19">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>i-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>i-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="20">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ty</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>ty</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="21">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>sur-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>sur-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="22">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>53760</duration>
-                <type>half</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>feits</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="23">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>on</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>on</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="24">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>would</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>would</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="25">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>re-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>re-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="26">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>lieve</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>lieve</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="27">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>us</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>us</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="28">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>if</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>if</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="29">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>they</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>they</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="30">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>would</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>would</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="31">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>yield</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="32">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>us</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>us</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="33">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>but</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>but</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="34">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>the</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>the</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="35">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave>
-                    <alter>-1</alter></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>su-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>su-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="36">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>per-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>per-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="37">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>flu-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="38">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>i-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>i-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="39">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ty</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>ty</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="40">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>while</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>while</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="41">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>3</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>it</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>it</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="42">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>3</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>were</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>were</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="43">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>3</octave></pitch>
-                <duration>53760</duration>
-                <type>half</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>whole-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="44">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>3</octave></pitch>
-                <duration>53760</duration>
-                <type>half</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>some</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>some</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="45">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>3</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>we</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>we</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="46">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>3</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>might</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>might</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="47">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>3</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>guess</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>guess</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="48">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>they</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>they</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="49">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>re-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>re-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="50">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>3</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>lieved</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="51">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>3</octave></pitch>
-                <duration>40320</duration>
-                <type>quarter</type><dot/>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>us</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>us</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="52">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>hu-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>hu-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="53">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>3</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>mane-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="54">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>3</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ly</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>ly</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="55">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>but</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>but</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="56">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>they</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>they</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="57">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>think</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>think</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="58">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>we</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>we</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="59">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>are</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>are</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="60">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>too</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>too</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="61">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>dear</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>dear</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="62">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>the</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>the</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="63">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>lean-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="64">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ness</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>ness</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="65">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>that</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>that</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="66">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>af-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>af-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="67">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>flicts</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="68">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>us</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>us</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="69">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>the</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>the</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="70">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ob-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>ob-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="71">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ject</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="72">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>of</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>of</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="73">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>our</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>our</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="74">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>mis-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>mis-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="75">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>3</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>er-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>er-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="76">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>y</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>y</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="77">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>is</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>is</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="78">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>as</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>as</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="79">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>an</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>an</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="80">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>in-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>in-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="81">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>5</octave>
-                    <alter>1</alter></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ven-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>ven-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="82">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>5</octave>
-                    <alter>1</alter></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>to-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>to-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="83">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave>
-                    <alter>-1</alter></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ry</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>ry</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="84">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>to</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>to</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="85">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>par-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>par-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="86">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>tic-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>tic-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="87">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave>
-                    <alter>1</alter></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>u-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>u-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="88">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>lar-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>lar-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="89">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ise</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>ise</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="90">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>their</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>their</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="91">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>a-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>a-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="92">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>bun-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="93">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>dance</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>dance</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="94">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>our</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>our</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="95">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>suf-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="96">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave>
-                    <alter>1</alter></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>fer-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>fer-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="97">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>3</octave></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ance</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>ance</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="98">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>is</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>is</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="99">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>a</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>a</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="100">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>40320</duration>
-                <type>quarter</type><dot/>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>gain</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>gain</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="101">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>to</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>to</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="102">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>them</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>them</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="103">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>Let</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="104">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>us</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>us</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="105">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>re-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>re-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="106">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>F</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>venge</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="107">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>this</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>this</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="108">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>with</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>with</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="109">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>our</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>our</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="110">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>pikes</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="111">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>ere</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="112">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>we</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>we</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="113">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>be-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>be-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="114">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>4</octave>
-                    <alter>1</alter></pitch>
-                <duration>26880</duration>
-                <type>quarter</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>come</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>come</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="115">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>rakes</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="116">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>for</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>for</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="117">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>the</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>the</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="118">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>gods</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>gods</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="119">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>know</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>know</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="120">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>i</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>i</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="121">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>D</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>speak</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>speak</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="122">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>this</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>this</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="123">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>in</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>in</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="124">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>hunger</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="125">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>G</step>
-                    <octave>3</octave></pitch>
-                <duration>6720</duration>
-                <type>16th</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>for</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>for</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="126">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>3</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>bread</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>bread</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="127">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>3</octave></pitch>
-                <duration>6720</duration>
-                <type>16th</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>not</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>not</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="128">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>C</step>
-                    <octave>4</octave></pitch>
-                <duration>6720</duration>
-                <type>16th</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>in</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>in</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="129">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave></pitch>
-                <duration>20160</duration>
-                <type>eighth</type><dot/>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>thirst</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="130">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>B</step>
-                    <octave>4</octave></pitch>
-                <duration>6720</duration>
-                <type>16th</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>for</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>for</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="131">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>A</step>
-                    <octave>4</octave></pitch>
-                <duration>6720</duration>
-                <type>16th</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>re-</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>re-</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="132">
-            <attributes>
-                <divisions>26880</divisions>
-            </attributes>
-            <note default-y="-30.00" default-x="12.00">
-                <pitch><step>E</step>
-                    <octave>4</octave></pitch>
-                <duration>13440</duration>
-                <type>eighth</type>
-                <voice>1</voice>
-                <stem>up</stem>
-                <lyric number="1">
-                    <text>venge</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>&lt;unk&gt;</text>
-                    <extend/>
-                </lyric>
-            </note>
-        </measure><measure number="133">
             <attributes>
                 <divisions>26880</divisions>
             </attributes>
@@ -2727,7 +239,347 @@
                     <extend/>
                 </lyric>
                 <lyric number="2">
-                    <text>&lt;unk&gt;</text>
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="10">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>G</step>
+                    <octave>4</octave></pitch>
+                <duration>107520</duration>
+                <type>whole</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>birthday</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="11">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>F</step>
+                    <octave>4</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text></text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="12">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>G</step>
+                    <octave>3</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>to</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="13">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>G</step>
+                    <octave>3</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>you,</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="14">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>G</step>
+                    <octave>3</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>happy</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="15">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>A</step>
+                    <octave>3</octave></pitch>
+                <duration>13440</duration>
+                <type>eighth</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text></text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="16">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>C</step>
+                    <octave>4</octave></pitch>
+                <duration>13440</duration>
+                <type>eighth</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>birthday</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="17">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>C</step>
+                    <octave>4</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text></text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="18">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>G</step>
+                    <octave>4</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>dear</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="19">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>G</step>
+                    <octave>4</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>[Name</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="20">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>G</step>
+                    <octave>4</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>Here],</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="21">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>A</step>
+                    <octave>4</octave></pitch>
+                <duration>13440</duration>
+                <type>eighth</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>happy</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="22">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>A</step>
+                    <octave>4</octave></pitch>
+                <duration>13440</duration>
+                <type>eighth</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text></text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="23">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>C</step>
+                    <octave>4</octave></pitch>
+                <duration>53760</duration>
+                <type>half</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>birthday</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="24">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>A</step>
+                    <octave>3</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text></text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="25">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>B</step>
+                    <octave>3</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>to</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
+                    <extend/>
+                </lyric>
+            </note>
+        </measure><measure number="26">
+            <attributes>
+                <divisions>26880</divisions>
+            </attributes>
+            <note default-y="-30.00" default-x="12.00">
+                <pitch><step>B</step>
+                    <octave>3</octave></pitch>
+                <duration>26880</duration>
+                <type>quarter</type>
+                <voice>1</voice>
+                <stem>up</stem>
+                <lyric number="1">
+                    <text>you.</text>
+                    <extend/>
+                </lyric>
+                <lyric number="2">
+                    <text></text>
                     <extend/>
                 </lyric>
             </note>
