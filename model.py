@@ -169,13 +169,13 @@ class MusicNetwork:
         self.PhraseVocabSize = self.Dataset.phrase_vocab_size()
         self.StressesVocabSize = 5
 
-        self.PitchModel = MusicRNNModel(['durations', 'stress', 'phrase_begin_index', 'phrase_end_index', 'pitches_shift'],
-                                        [self.DurationsVocabSize, self.StressesVocabSize, self.PhraseVocabSize,
+        self.PitchModel = MusicRNNModel(['durations', 'stress', 'phrase_end', 'pitches_shift'],
+                                        [self.DurationsVocabSize, self.StressesVocabSize,
                                          self.PhraseVocabSize, self.PitchesVocabSize],
                                          'pitches', self.PitchesVocabSize)
 
-        self.RhythmModel = MusicRNNModel(['stress', 'phrase_begin_index', 'phrase_end_index', 'durations_shift'],
-                                         [self.StressesVocabSize, self.PhraseVocabSize, self.PhraseVocabSize,
+        self.RhythmModel = MusicRNNModel(['stress', 'phrase_end', 'durations_shift'],
+                                         [self.StressesVocabSize, self.PhraseVocabSize,
                                           self.DurationsVocabSize],
                                          'durations', self.DurationsVocabSize)
 
@@ -185,10 +185,7 @@ class MusicNetwork:
 
     def sample(self, input_text):
         dict = CmuDict()
-        phrase_begin_idx = 0
-        phrase_begin_idx_list = []
-        sheet_phrase_begin_idx_list = []
-        sheet_phrase_end_idx_list = []
+        phrase_end_list = []
         stress = []
         syllables = []
         for word in input_text.split(' '):
@@ -198,18 +195,13 @@ class MusicNetwork:
                 stress += self.Dataset.stress_encode(x)
                 if idx > 0:
                     syllables.append('')
+                if end_phrase_word and idx == len(dict.stress(word)) - 1:
+                    phrase_end_list.append(1)
+                else:
+                    phrase_end_list.append(0)
 
-                phrase_begin_idx_list.append(phrase_begin_idx)
-                if end_phrase_word and idx == len(word) - 1:
-                    sheet_phrase_begin_idx_list += phrase_begin_idx_list
-                    sheet_phrase_end_idx_list += list(reversed(phrase_begin_idx_list))
-                    phrase_begin_idx_list = []
-                    phrase_begin_idx = -1
-                phrase_begin_idx += 1
+        print phrase_end_list
 
-        sheet_phrase_begin_idx_list += phrase_begin_idx_list
-        sheet_phrase_end_idx_list += list(reversed(phrase_begin_idx_list))
-
-        rhythm_out = self.RhythmModel.sample([stress, sheet_phrase_begin_idx_list, sheet_phrase_end_idx_list])
-        pitches_out = self.PitchModel.sample([rhythm_out, stress, sheet_phrase_begin_idx_list, sheet_phrase_end_idx_list])
+        rhythm_out = self.RhythmModel.sample([stress, phrase_end_list])
+        pitches_out = self.PitchModel.sample([rhythm_out, stress, phrase_end_list])
         return self.Dataset.durations_decode(rhythm_out), self.Dataset.pitches_decode(pitches_out), syllables

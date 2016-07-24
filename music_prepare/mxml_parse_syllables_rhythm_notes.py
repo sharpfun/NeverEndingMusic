@@ -126,24 +126,19 @@ def mxml_parse_syllables_rhythm_pitch(xml, file_path):
     except AttributeError:
         fifths = 0
 
-    phrase_begin_idx = 0
-    phrase_begin_idx_list = []
-    sheet_phrase_begin_idx_list = []
-    sheet_phrase_end_idx_list = []
+    phrase_end_list = []
 
     for note in xml.find_all(name="note"):
         lyric = note.find(name="lyric", attrs={"number": "1"})
         if not lyric or not lyric.find("text") or not note.pitch or not note.duration:
             continue
+
         syll = lyric.find("text").text
 
-        phrase_begin_idx_list.append(phrase_begin_idx)
         if len(syll) > 0 and syll[-1] in ['.', ',', '?', '!', ';', ')', ']']:
-            sheet_phrase_begin_idx_list += phrase_begin_idx_list
-            sheet_phrase_end_idx_list += list(reversed(phrase_begin_idx_list))
-            phrase_begin_idx_list = []
-            phrase_begin_idx = -1
-        phrase_begin_idx += 1
+            phrase_end_list.append(1)
+        else:
+            phrase_end_list.append(0)
 
         syllable = clean_word(syll, True)
         if lyric.syllabic and lyric.syllabic.text in ['begin', 'middle']:
@@ -163,9 +158,6 @@ def mxml_parse_syllables_rhythm_pitch(xml, file_path):
         durations_arr.append(int(duration))
         pitches_arr.append(pitch)
 
-    sheet_phrase_begin_idx_list += phrase_begin_idx_list
-    sheet_phrase_end_idx_list += list(reversed(phrase_begin_idx_list))
-
     all_divisions = xml.find_all(name="divisions")
     uniq_divisions = set()
     for division in all_divisions:
@@ -178,8 +170,7 @@ def mxml_parse_syllables_rhythm_pitch(xml, file_path):
         "syllables": syllables_arr,
         "durations": durations_arr,
         "pitches": pitches_arr,
-        "phrase_begin_index": sheet_phrase_begin_idx_list,
-        "phrase_end_index": sheet_phrase_end_idx_list,
+        "phrase_end": phrase_end_list,
         "duration_divisions": int(xml.find(name="divisions").text),
         "fifths": fifths
     })
