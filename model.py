@@ -163,6 +163,7 @@ class MusicRNNModel:
     def sample(self, inputs_list):
         output = []
         out = 0
+        output.append(out)
 
         for tup in zip(*inputs_list):
             new_tup = ()
@@ -176,7 +177,7 @@ class MusicRNNModel:
             out = numpy.random.choice(self.OutputSourceVocab, 1, p=dist)[0]
             output.append(out)
 
-        return output
+        return output[:-1]
 
 
 class MusicNetwork:
