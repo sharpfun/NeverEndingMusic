@@ -14,7 +14,6 @@ from fuel.streams import DataStream
 from fuel.schemes import SequentialScheme
 from blocks.extensions import Printing, FinishAfter
 from blocks.extensions.saveload import Checkpoint, load
-from fuel.datasets.hdf5 import H5PYDataset
 from blocks.extensions.monitoring import TrainingDataMonitoring, DataStreamMonitoring
 
 from CMUDict import CmuDict
@@ -52,21 +51,43 @@ class MusicRNNModel:
                               weights_init=initialization.Uniform(width=0.01),
                               biases_init=Constant(0))
         merge.initialize()
-        recurrent_block = SimpleRecurrent(dim=hidden_size, activation=Tanh(),
-                              weights_init=initialization.Uniform(width=0.01)) #RecurrentStack([LSTM(dim=self.hidden_size, activation=Tanh())] * 3)
-        recurrent_block.name = 'recurrent'
-        recurrent_block.initialize()
-        linear = Linear(input_dim=hidden_size, output_dim=output_source_vocab_size,
+
+        linear0 = Linear(input_dim=hidden_size, output_dim=hidden_size,
+                        weights_init=initialization.Uniform(width=0.01),
+                        biases_init=Constant(0), name='linear0')
+        linear0.initialize()
+
+        recurrent_block1 = SimpleRecurrent(dim=hidden_size, activation=Tanh(),
+                                           weights_init=initialization.Uniform(width=0.01))
+
+        recurrent_block1.name = 'recurrent1'
+        recurrent_block1.initialize()
+
+        recurrent_block2 = SimpleRecurrent(dim=hidden_size, activation=Tanh(),
+                                           weights_init=initialization.Uniform(width=0.01))
+        recurrent_block2.name = 'recurrent2'
+        recurrent_block2.initialize()
+
+        recurrent_block3 = SimpleRecurrent(dim=hidden_size, activation=Tanh(),
+                                           weights_init=initialization.Uniform(width=0.01))
+
+        recurrent_block3.name = 'recurrent3'
+        recurrent_block3.initialize()
+
+        linear_out = Linear(input_dim=hidden_size, output_dim=output_source_vocab_size,
                               weights_init=initialization.Uniform(width=0.01),
-                              biases_init=Constant(0))
-        linear.initialize()
+                              biases_init=Constant(0), name='linear_out')
+        linear_out.initialize()
         softmax = NDimensionalSoftmax(name='softmax')
 
         lookup_outputs = [lookup.apply(input) for lookup, input in zip(lookups, inputs)]
 
         m = merge.apply(*lookup_outputs)
-        h = recurrent_block.apply(m)
-        a = linear.apply(h)
+        l0 = linear0.apply(m)
+        h1 = recurrent_block1.apply(l0)
+        #h2 = recurrent_block2.apply(h1)
+        #h3 = recurrent_block3.apply(h2)
+        a = linear_out.apply(h1)
 
         self.Cost = softmax.categorical_cross_entropy(output, a, extra_ndim=1).mean()
         self.Cost.name = 'cost'
@@ -87,8 +108,8 @@ class MusicRNNModel:
 
     def train(self, data_file, output_data_file, n_epochs=0):
 
-        training_data = H5PYDataset(data_file, which_sets=('train',))
-        test_data = H5PYDataset(data_file, which_sets=('test',))
+        training_data = dataset.T_H5PYDataset(data_file, which_sets=('train',))
+        test_data = dataset.T_H5PYDataset(data_file, which_sets=('test',))
 
         session = Session(root_url='http://localhost:5006')
         session.login('castle', 'password')
@@ -134,13 +155,12 @@ class MusicRNNModel:
         model_inputs = [self.get_var_from(source, self.Model.variables) for source in self.InputSources]
         model_softmax = self.get_var_from('softmax_log_probabilities_output', self.Model.variables)
         model_initial_state = self.get_var_from('initial_state', self.Model.shared_variables)
-        model_intermediary_states = self.get_var_from('recurrent_apply_states', self.Model.intermediary_variables)
+        model_intermediary_states = self.get_var_from('recurrent1_apply_states', self.Model.intermediary_variables)
 
         self.Function = theano.function(model_inputs, model_softmax,
                                         updates=[(model_initial_state, model_intermediary_states[0][0])])
 
     def sample(self, inputs_list):
-
         output = []
         out = 0
 
@@ -150,6 +170,9 @@ class MusicRNNModel:
                 new_tup += ([[p]],)
             new_tup += ([[out]],)
             dist = numpy.exp(self.Function(*new_tup)[0])
+
+            print dist
+
             out = numpy.random.choice(self.OutputSourceVocab, 1, p=dist)[0]
             output.append(out)
 
@@ -169,15 +192,15 @@ class MusicNetwork:
         self.PhraseVocabSize = self.Dataset.phrase_vocab_size()
         self.StressesVocabSize = 5
 
-        self.PitchModel = MusicRNNModel(['durations', 'stress', 'phrase_end', 'pitches_shift'],
+        self.PitchModel = MusicRNNModel(['durations', 'stress', 'phrase_end', 'pitches'],
                                         [self.DurationsVocabSize, self.StressesVocabSize,
                                          self.PhraseVocabSize, self.PitchesVocabSize],
-                                         'pitches', self.PitchesVocabSize)
+                                         'pitches_shift', self.PitchesVocabSize)
 
-        self.RhythmModel = MusicRNNModel(['stress', 'phrase_end', 'durations_shift'],
+        self.RhythmModel = MusicRNNModel(['stress', 'phrase_end', 'durations'],
                                          [self.StressesVocabSize, self.PhraseVocabSize,
                                           self.DurationsVocabSize],
-                                         'durations', self.DurationsVocabSize)
+                                         'durations_shift', self.DurationsVocabSize)
 
     def load(self):
         self.RhythmModel.load('trainingdata_rhythm.tar')
