@@ -19,6 +19,9 @@ class CmuDict:
 
     def stress(self, word):
         lowercase = word.replace('-', '').lower().rstrip(string.punctuation)
+
+        syllables_len = word.count('-') + 1
+
         if len(lowercase) <= 0:
             return '4'
         if lowercase in self.dict:
@@ -29,20 +32,32 @@ class CmuDict:
             out = re.sub(r'[^0-9]', '', out)
         else:
             print lowercase
-            out = '3'*(word.count('-')+1)
+            out = '3'*syllables_len
+
+        if len(out) > syllables_len:
+            out = out[:syllables_len]
+        if len(out) < syllables_len:
+            out += '0' * (syllables_len - len(out))
 
         return out
 
     def stress_syllable_list(self, syllables):
         result = ''
         word = ''
+        has_to_parse = False
         for syllable in syllables:
             if syllable.endswith("-"):
-                word += syllable
+                word += syllable.replace("-", "") + "-"
+                has_to_parse = True
             else:
-                word += syllable
+                word += syllable.replace("-", "")
                 result += self.stress(word)
                 word = ''
+                has_to_parse = False
+
+        if has_to_parse:
+            result += self.stress(word[:-1])
+
         return result
 
     def sentence(self, sent):
