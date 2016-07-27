@@ -168,16 +168,16 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
         all_stress = []
         all_end_idx = []
 
-        """
+
         for sheet in sheets:
             upto = sequence_length*((len(sheet["durations"])-1)/sequence_length)
             all_durations += sheet["durations"][1:upto+1]
             all_durations_prev += sheet["durations"][:upto]
-            all_syllables += sheet["syllables"][:upto]
+            all_syllables += sheet["syllables"][1:upto+1]
             all_pitches += sheet["pitches"][1:upto+1]
             all_pitches_prev += sheet["pitches"][:upto]
-            all_stress += sheet["stress"][:upto]
-            all_end_idx += sheet["phrase_end"][:upto]
+            all_stress += sheet["stress"][1:upto+1]
+            all_end_idx += sheet["phrase_end"][1:upto+1]
 
         """
         for sheet in sheets:
@@ -192,6 +192,7 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
             all_pitches_prev += sheet["pitches"][:upto] + ["R"]
             all_stress += sheet["stress"][1:upto+1] + ["_"]
             all_end_idx += sheet["phrase_end"][1:upto+1] + [1]
+        """
 
         print durations_set
         print len(durations_set)
@@ -287,7 +288,7 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
 
 if __name__ == "__main__":
     createH5Dataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5',
-                    'dataset/normalized_syllables_rhythm_notes.json', 100)
+                    'dataset/normalized_syllables_rhythm_notes.json', 30)
     ds = T_H5PYDataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5', which_sets=('train',))
     print ds.syllables_vocab()
 

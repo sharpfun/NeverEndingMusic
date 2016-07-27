@@ -112,7 +112,6 @@ class MusicRNNModel:
         test_data = dataset.T_H5PYDataset(data_file, which_sets=('test',))
 
         session = Session(root_url='http://localhost:5006')
-        session.login('castle', 'password')
 
         if self.MainLoop is None:
             step_rules = [Adam()]
@@ -124,11 +123,11 @@ class MusicRNNModel:
 
             train_stream = DataStream.default_stream(
                 training_data, iteration_scheme=SequentialScheme(
-                    training_data.num_examples, batch_size=100))
+                    training_data.num_examples, batch_size=50))
 
             test_stream = DataStream.default_stream(
                 test_data, iteration_scheme=SequentialScheme(
-                    test_data.num_examples, batch_size=100))
+                    test_data.num_examples, batch_size=50))
 
             self.MainLoop = MainLoop(
                 model=Model(self.Cost),
