@@ -161,28 +161,38 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
                     sheet["syllables"][i] = "<unk>"
 
         all_durations = []
+        all_durations_prev = []
         all_syllables = []
         all_pitches = []
+        all_pitches_prev = []
         all_stress = []
         all_end_idx = []
 
-        """for sheet in sheets:
-            upto = sequence_length*(len(sheet["durations"])/sequence_length)
-            sheet["durations"] = sheet["durations"][:upto]
-            sheet["syllables"] = sheet["syllables"][:upto]
-            sheet["pitches"] = sheet["pitches"][:upto]
 
         for sheet in sheets:
-            all_durations += sheet["durations"]
-            all_syllables += sheet["syllables"]
-            all_pitches += sheet["pitches"]"""
+            upto = sequence_length*((len(sheet["durations"])-1)/sequence_length)
+            all_durations += sheet["durations"][1:upto+1]
+            all_durations_prev += sheet["durations"][:upto]
+            all_syllables += sheet["syllables"][1:upto+1]
+            all_pitches += sheet["pitches"][1:upto+1]
+            all_pitches_prev += sheet["pitches"][:upto]
+            all_stress += sheet["stress"][1:upto+1]
+            all_end_idx += sheet["phrase_end"][1:upto+1]
 
+        """
         for sheet in sheets:
-            all_durations += sheet["durations"] + [0]
-            all_syllables += sheet["syllables"] + ["<end_file>"]
-            all_pitches += sheet["pitches"] + ["R"]
-            all_stress += sheet["stress"] + ["_"]
-            all_end_idx += sheet["phrase_end"] + [1]
+            #if len(list(set([len(sheet["durations"]), len(sheet["syllables"]), len(sheet["pitches"]), len(sheet["stress"]), len(sheet["phrase_end"])])))>1:
+            #    print sheet
+            #    raise NotImplementedError
+            upto = len(sheet["durations"]) - 1
+            all_durations += sheet["durations"][1:upto+1] + [0]
+            all_durations_prev += sheet["durations"][:upto] + [0]
+            all_syllables += sheet["syllables"][1:upto+1] + ["<end_file>"]
+            all_pitches += sheet["pitches"][1:upto+1] + ["R"]
+            all_pitches_prev += sheet["pitches"][:upto] + ["R"]
+            all_stress += sheet["stress"][1:upto+1] + ["_"]
+            all_end_idx += sheet["phrase_end"][1:upto+1] + [1]
+        """
 
         print durations_set
         print len(durations_set)
@@ -193,65 +203,72 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
         print pitches_set
         print len(pitches_set)
 
-        (durations_indices, durations_vocab) = pd.factorize(all_durations)
+        (all_durations_indices, durations_vocab) = pd.factorize(all_durations_prev + all_durations)
+        durations_prev_indices = all_durations_indices[:len(all_durations_indices)/2]
+        durations_indices = all_durations_indices[len(all_durations_indices)/2:]
         (syllables_indices, syllables_vocab) = pd.factorize(all_syllables)
-        (pitches_indices, pitches_vocab) = pd.factorize(all_pitches)
+        (all_pitches_indices, pitches_vocab) = pd.factorize(all_pitches_prev + all_pitches)
+        pitches_prev_indices = all_pitches_indices[:len(all_pitches_indices) / 2]
+        pitches_indices = all_pitches_indices[len(all_pitches_indices) / 2:]
         (stress_indices, stress_vocab) = pd.factorize(all_stress)
 
         instances_num = (len(durations_indices)-1) // sequence_length
-        fout = h5py.File(hdf5_out, mode='w')
 
         train_data_durations = np.zeros((instances_num, sequence_length), dtype=np.uint16)
-        train_data_durations_shift = np.zeros((instances_num, sequence_length), dtype=np.uint16)
+        train_data_durations_prev = np.zeros((instances_num, sequence_length), dtype=np.uint16)
         train_data_syllables = np.zeros((instances_num, sequence_length), dtype=np.uint16)
         train_data_pitches = np.zeros((instances_num, sequence_length), dtype=np.uint16)
-        train_data_pitches_shift = np.zeros((instances_num, sequence_length), dtype=np.uint16)
+        train_data_pitches_prev = np.zeros((instances_num, sequence_length), dtype=np.uint16)
         train_data_stress = np.zeros((instances_num, sequence_length), dtype=np.uint16)
         train_data_phrase_end = np.zeros((instances_num, sequence_length), dtype=np.uint16)
+
+        print len(durations_indices), len(syllables_indices), len(pitches_indices), len(stress_indices), len(all_end_idx)
 
         for j in range(instances_num):
             for i in range(sequence_length):
                 train_data_durations[j][i] = durations_indices[i + j * sequence_length]
-                train_data_durations_shift[j][i] = durations_indices[i + j * sequence_length + 1]
+                train_data_durations_prev[j][i] = durations_prev_indices[i + j * sequence_length]
                 train_data_syllables[j][i] = syllables_indices[i + j * sequence_length]
                 train_data_pitches[j][i] = pitches_indices[i + j * sequence_length]
-                train_data_pitches_shift[j][i] = pitches_indices[i + j * sequence_length + 1]
+                train_data_pitches_prev[j][i] = pitches_prev_indices[i + j * sequence_length]
                 train_data_stress[j][i] = stress_indices[i + j * sequence_length]
                 train_data_phrase_end[j][i] = all_end_idx[i + j * sequence_length]
 
+        fout = h5py.File(hdf5_out, mode='w')
+
         note_durations = fout.create_dataset('durations', train_data_durations.shape, dtype='uint16')
-        note_durations_shift = fout.create_dataset('durations_shift', train_data_durations.shape, dtype='uint16')
+        note_durations_prev = fout.create_dataset('durations_prev', train_data_durations.shape, dtype='uint16')
         note_syllables = fout.create_dataset('syllables', train_data_syllables.shape, dtype='uint16')
         note_pitches = fout.create_dataset('pitches', train_data_syllables.shape, dtype='uint16')
-        note_pitches_shift = fout.create_dataset('pitches_shift', train_data_syllables.shape, dtype='uint16')
+        note_pitches_prev = fout.create_dataset('pitches_prev', train_data_syllables.shape, dtype='uint16')
         note_stress = fout.create_dataset('stress', train_data_stress.shape, dtype='uint16')
         note_end = fout.create_dataset('phrase_end', train_data_phrase_end.shape, dtype='uint16')
 
         note_durations[...] = train_data_durations
-        note_durations_shift[...] = train_data_durations_shift
+        note_durations_prev[...] = train_data_durations_prev
         note_syllables[...] = train_data_syllables
         note_pitches[...] = train_data_pitches
-        note_pitches_shift[...] = train_data_pitches_shift
+        note_pitches_prev[...] = train_data_pitches_prev
         note_stress[...] = train_data_stress
         note_end[...] = train_data_phrase_end
 
-        split_num = int(instances_num * 0.7)
+        split_num = int(instances_num * 0.9)
 
         split_dict = {
             'train': {
                 'durations': (0, split_num),
-                'durations_shift': (0, split_num),
+                'durations_prev': (0, split_num),
                 'syllables': (0, split_num),
                 'pitches': (0, split_num),
-                'pitches_shift': (0, split_num),
+                'pitches_prev': (0, split_num),
                 'stress': (0, split_num),
                 'phrase_end': (0, split_num)},
             'test': {
                 'durations': (split_num+1, instances_num),
-                'durations_shift': (split_num+1, instances_num),
+                'durations_prev': (split_num+1, instances_num),
                 'syllables': (split_num+1, instances_num),
                 'pitches': (split_num+1, instances_num),
-                'pitches_shift': (split_num+1, instances_num),
+                'pitches_prev': (split_num+1, instances_num),
                 'stress': (split_num+1, instances_num),
                 'phrase_end': (split_num+1, instances_num)}
         }
@@ -272,7 +289,7 @@ def createH5Dataset(hdf5_out, normalized_outfile, sequence_length):
 if __name__ == "__main__":
     createH5Dataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5',
                     'dataset/normalized_syllables_rhythm_notes.json', 100)
-    ds = T_H5PYDataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-30.hdf5', which_sets=('train',))
+    ds = T_H5PYDataset('dataset/normalized_syllables_rhythm_notes.json-seqlen-100.hdf5', which_sets=('train',))
     print ds.syllables_vocab()
 
 #train_data = H5PYDataset('dataset.hdf5', which_sets=('train',), load_in_memory=True)
