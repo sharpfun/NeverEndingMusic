@@ -17,7 +17,7 @@ class CmuDict:
             if 'every' in key:
                 self.unknown_dict[key.replace('every', 'evry')] = key
 
-    def stress(self, word):
+    def stress(self, word, cut_by_syllables=False):
         lowercase = word.replace('-', '').lower().rstrip(string.punctuation)
 
         syllables_len = word.count('-') + 1
@@ -34,10 +34,11 @@ class CmuDict:
             print lowercase
             out = '3'*syllables_len
 
-        if len(out) > syllables_len:
-            out = out[:syllables_len]
-        if len(out) < syllables_len:
-            out += '0' * (syllables_len - len(out))
+        if cut_by_syllables:
+            if len(out) > syllables_len:
+                out = out[:syllables_len]
+            if len(out) < syllables_len:
+                out += '0' * (syllables_len - len(out))
 
         return out
 
@@ -51,12 +52,12 @@ class CmuDict:
                 has_to_parse = True
             else:
                 word += syllable.replace("-", "")
-                result += self.stress(word)
+                result += self.stress(word, cut_by_syllables=True)
                 word = ''
                 has_to_parse = False
 
         if has_to_parse:
-            result += self.stress(word[:-1])
+            result += self.stress(word[:-1], cut_by_syllables=True)
 
         return result
 

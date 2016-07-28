@@ -8,7 +8,7 @@ from blocks.bricks.lookup import LookupTable
 from blocks.bricks.parallel import Merge
 from blocks.graph import ComputationGraph
 from blocks.model import Model
-from blocks.algorithms import GradientDescent, StepClipping, CompositeRule, Adam
+from blocks.algorithms import StepClipping, GradientDescent, CompositeRule, RMSProp
 from blocks.main_loop import MainLoop
 from fuel.streams import DataStream
 from fuel.schemes import SequentialScheme
@@ -114,7 +114,7 @@ class MusicRNNModel:
         session = Session(root_url='http://localhost:5006')
 
         if self.MainLoop is None:
-            step_rules = [Adam()]
+            step_rules = [RMSProp(learning_rate=0.002, decay_rate=0.9), StepClipping(0.1)]
 
             algorithm = GradientDescent(cost=self.Cost,
                                         parameters=self.ComputationGraph.parameters,
@@ -123,11 +123,11 @@ class MusicRNNModel:
 
             train_stream = DataStream.default_stream(
                 training_data, iteration_scheme=SequentialScheme(
-                    training_data.num_examples, batch_size=50))
+                    training_data.num_examples, batch_size=200))
 
             test_stream = DataStream.default_stream(
                 test_data, iteration_scheme=SequentialScheme(
-                    test_data.num_examples, batch_size=50))
+                    test_data.num_examples, batch_size=200))
 
             self.MainLoop = MainLoop(
                 model=Model(self.Cost),
@@ -203,8 +203,8 @@ class MusicNetwork:
         self.PhraseVocabSize = self.Dataset.phrase_vocab_size()
         self.StressesVocabSize = 5
 
-        self.PitchModel = MusicRNNModel(['durations', 'stress', 'phrase_end', 'pitches_prev'],
-                                        [self.DurationsVocabSize, self.StressesVocabSize,
+        self.PitchModel = MusicRNNModel(['durations', 'durations_prev', 'stress', 'phrase_end', 'pitches_prev'],
+                                        [self.DurationsVocabSize, self.DurationsVocabSize, self.StressesVocabSize,
                                          self.PhraseVocabSize, self.PitchesVocabSize],
                                          'pitches', self.PitchesVocabSize)
 
@@ -237,5 +237,5 @@ class MusicNetwork:
         print phrase_end_list
 
         rhythm_out = self.RhythmModel.sample([stress, phrase_end_list])
-        pitches_out = self.PitchModel.sample([rhythm_out, stress, phrase_end_list])
+        pitches_out = self.PitchModel.sample([rhythm_out, [0]+rhythm_out[:-1], stress, phrase_end_list])
         return self.Dataset.durations_decode(rhythm_out), self.Dataset.pitches_decode(pitches_out), syllables
