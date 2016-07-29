@@ -57,22 +57,11 @@ class MusicRNNModel:
                         biases_init=Constant(0), name='linear0')
         linear0.initialize()
 
-        recurrent_block1 = SimpleRecurrent(dim=hidden_size, activation=Tanh(),
-                                           weights_init=initialization.Uniform(width=0.01))
-
-        recurrent_block1.name = 'recurrent1'
-        recurrent_block1.initialize()
-
-        recurrent_block2 = SimpleRecurrent(dim=hidden_size, activation=Tanh(),
-                                           weights_init=initialization.Uniform(width=0.01))
-        recurrent_block2.name = 'recurrent2'
-        recurrent_block2.initialize()
-
-        recurrent_block3 = SimpleRecurrent(dim=hidden_size, activation=Tanh(),
-                                           weights_init=initialization.Uniform(width=0.01))
-
-        recurrent_block3.name = 'recurrent3'
-        recurrent_block3.initialize()
+        recurrent_blocks = [SimpleRecurrent(dim=hidden_size, activation=Tanh(),
+                                         weights_init=initialization.Uniform(width=0.01),
+                                         use_bias=False)] * 3
+        for recurrent_block in recurrent_blocks:
+            recurrent_block.initialize()
 
         linear_out = Linear(input_dim=hidden_size, output_dim=output_source_vocab_size,
                               weights_init=initialization.Uniform(width=0.01),
@@ -83,11 +72,10 @@ class MusicRNNModel:
         lookup_outputs = [lookup.apply(input) for lookup, input in zip(lookups, inputs)]
 
         m = merge.apply(*lookup_outputs)
-        l0 = linear0.apply(m)
-        h1 = recurrent_block1.apply(l0)
-        h2 = recurrent_block2.apply(h1)
-        h3 = recurrent_block3.apply(h2)
-        a = linear_out.apply(h3)
+        r = linear0.apply(m)
+        for block in recurrent_blocks:
+            r = block.apply(r)
+        a = linear_out.apply(r)
 
         self.Cost = softmax.categorical_cross_entropy(output, a, extra_ndim=1).mean()
         self.Cost.name = 'cost'
@@ -150,6 +138,8 @@ class MusicRNNModel:
     def load(self, filename):
         self.MainLoop = load(open(filename))
         self.Model = self.MainLoop.model
+
+        print self.Model.intermediary_variables
 
         model_inputs = [self.get_var_from(source, self.Model.variables) for source in self.InputSources]
         model_softmax = self.get_var_from('softmax_log_probabilities_output', self.Model.variables)
