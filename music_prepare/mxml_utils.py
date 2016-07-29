@@ -7,11 +7,11 @@ def create_mxml(syllables, syllables_decoded, durations, pitches, durations_divi
             <work-title></work-title>
         </work>
         <movement-number></movement-number>
-        <movement-title>Rural Life</movement-title>
+        <movement-title>Does android dream of electric sheep?</movement-title>
         <identification>
-            <creator type="composer">A. MacKenzie Davidson</creator>
+            <creator type="composer">False Memory System</creator>
             <creator type="poet"></creator>
-            <rights>All Rights Reserved</rights>
+            <rights>All Rights Roboted</rights>
             <encoding>
                 <software>MuseScore 1.2</software>
                 <encoding-date>2013-05-29</encoding-date>
@@ -86,8 +86,8 @@ def create_mxml(syllables, syllables_decoded, durations, pitches, durations_divi
                 </attributes>
             </measure>"""
 
-    for i in range(len(pitches)):
-        pitch = pitches[i]
+    for i, pitch in enumerate(pitches):
+
         if len(pitch) == 2:
             pitch_xml = """<step>%s</step>
                     <octave>%s</octave>""" % (pitch[0], pitch[1])
@@ -128,6 +128,21 @@ def create_mxml(syllables, syllables_decoded, durations, pitches, durations_divi
             if duration_type_xml != '':
                 break
 
+        if i < len(pitches)-1:
+            if syllables[i] != '' and syllables[i+1] != '':
+                syllabic = 'single'
+            if syllables[i] != '' and syllables[i + 1] == '':
+                syllabic = 'begin'
+            if syllables[i] == '' and syllables[i + 1] == '':
+                syllabic = 'middle'
+            if syllables[i] == '' and syllables[i + 1] != '':
+                syllabic = 'end'
+        else:
+            if syllables[i] == '':
+                syllabic = 'end'
+            else:
+                syllabic = 'middle'
+
         output += """<measure number="%s">
             <attributes>
                 <divisions>%s</divisions>
@@ -140,14 +155,10 @@ def create_mxml(syllables, syllables_decoded, durations, pitches, durations_divi
                 <stem>up</stem>
                 <lyric number="1">
                     <text>%s</text>
-                    <extend/>
-                </lyric>
-                <lyric number="2">
-                    <text>%s</text>
-                    <extend/>
+                    <syllabic>%s</syllabic>
                 </lyric>
             </note>
-        </measure>""" % (i+2, durations_division_size, pitch_xml, durations[i], duration_type_xml, syllables[i], syllables_decoded[i].replace("<", "&lt;").replace(">", "&gt;"))
+        </measure>""" % (i+2, durations_division_size, pitch_xml, durations[i], duration_type_xml, syllables[i], syllabic)
 
     output += """</part>
     </score-partwise>"""
