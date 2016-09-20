@@ -32,7 +32,7 @@ class MusicRNNModel:
 
     def __init__(self, input_sources_list, input_sources_vocab_size_list,
                  output_source, output_source_vocab_size,
-                 lookup_dim=200, hidden_size=512):
+                 lookup_dim=200, hidden_size=256, recurrent_stack_size=1):
 
         self.InputSources = input_sources_list
         self.InputSourcesVocab = input_sources_vocab_size_list
@@ -57,10 +57,16 @@ class MusicRNNModel:
                         biases_init=Constant(0), name='linear0')
         linear0.initialize()
 
-        recurrent_blocks = [SimpleRecurrent(dim=hidden_size, activation=Tanh(),
-                                         weights_init=initialization.Uniform(width=0.01),
-                                         use_bias=False)] * 3
-        for recurrent_block in recurrent_blocks:
+        recurrent_blocks = []
+
+        for i in range(recurrent_stack_size):
+            recurrent_blocks.append(SimpleRecurrent(
+                dim=hidden_size, activation=Tanh(),
+                weights_init=initialization.Uniform(width=0.01),
+                use_bias=False))
+
+        for i, recurrent_block in enumerate(recurrent_blocks):
+            recurrent_block.name = 'recurrent'+str(i+1)
             recurrent_block.initialize()
 
         linear_out = Linear(input_dim=hidden_size, output_dim=output_source_vocab_size,
@@ -102,7 +108,7 @@ class MusicRNNModel:
         session = Session(root_url='http://localhost:5006')
 
         if self.MainLoop is None:
-            step_rules = [RMSProp(learning_rate=0.002, decay_rate=0.9), StepClipping(0.1)]
+            step_rules = [RMSProp(learning_rate=0.2, decay_rate=0.95), StepClipping(1)]
 
             algorithm = GradientDescent(cost=self.Cost,
                                         parameters=self.ComputationGraph.parameters,
@@ -111,11 +117,11 @@ class MusicRNNModel:
 
             train_stream = DataStream.default_stream(
                 training_data, iteration_scheme=SequentialScheme(
-                    training_data.num_examples, batch_size=200))
+                    training_data.num_examples, batch_size=100))
 
             test_stream = DataStream.default_stream(
                 test_data, iteration_scheme=SequentialScheme(
-                    test_data.num_examples, batch_size=200))
+                    test_data.num_examples, batch_size=100))
 
             self.MainLoop = MainLoop(
                 model=Model(self.Cost),
@@ -126,8 +132,8 @@ class MusicRNNModel:
                     Printing(),
                     Checkpoint(output_data_file, every_n_epochs=50),
                     TrainingDataMonitoring([self.Cost], after_batch=True, prefix='train'),
-                    #DataStreamMonitoring([self.Cost], after_batch=True, data_stream=test_stream, prefix='test'),
-                    Plot('Training', channels=[['train_cost', 'test_cost']])
+                    DataStreamMonitoring([self.Cost], after_batch=True, data_stream=test_stream, prefix='test'),
+                    Plot(output_data_file, channels=[['train_cost', 'test_cost']])
                 ])
 
         self.MainLoop.run()
@@ -146,20 +152,17 @@ class MusicRNNModel:
 
         parameter_dict = self.Model.get_parameter_dict()
 
-        model_r1_initial_state = parameter_dict["/recurrent1.initial_state"]
-        model_r2_initial_state = parameter_dict["/recurrent2.initial_state"]
-        model_r3_initial_state = parameter_dict["/recurrent3.initial_state"]
+        fun_updates = []
 
-        model_r1_intermediary_states = self.get_var_from('recurrent1_apply_states', self.Model.intermediary_variables)
-        model_r2_intermediary_states = self.get_var_from('recurrent2_apply_states', self.Model.intermediary_variables)
-        model_r3_intermediary_states = self.get_var_from('recurrent3_apply_states', self.Model.intermediary_variables)
+        for i in range(1,100):
+            initial_state_key = "/recurrent"+str(i)+".initial_state"
+            if initial_state_key not in parameter_dict:
+                break
+            intermediary_states = self.get_var_from("recurrent"+str(i)+"_apply_states", self.Model.intermediary_variables)
+            fun_updates.append((parameter_dict[initial_state_key], intermediary_states[0][0]))
 
         self.Function = theano.function(model_inputs, model_softmax,
-                                        updates=[
-                                            (model_r1_initial_state, model_r1_intermediary_states[0][0]),
-                                            (model_r2_initial_state, model_r2_intermediary_states[0][0]),
-                                            (model_r3_initial_state, model_r3_intermediary_states[0][0]),
-                                        ])
+                                        updates=fun_updates)
 
     def sample(self, inputs_list):
         output = []

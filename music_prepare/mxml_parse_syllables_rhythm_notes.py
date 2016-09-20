@@ -7,8 +7,8 @@ import shutil
 d = enchant.Dict("en_US")
 
 #folder = "/home/kroman/Downloads/nn/Wikifonia/Arrangement by John & Annie - Advent medley 2.mxl_FILES/"
-#folder = "/home/kroman/Downloads/nn/Wikifonia/"
-folder = 'C:\\Users\\Steffen\\NeverEndingMusic\\NeverEndingMusic\\music_prepare\\Wikifonia\\'
+folder = "/home/kroman/Downloads/nn/Wikifonia/"
+#folder = 'C:\\Users\\Steffen\\NeverEndingMusic\\NeverEndingMusic\\music_prepare\\Wikifonia\\'
 
 
 def clean_word(source, extra_clean=False):
