@@ -1,5 +1,75 @@
-This is a project of endless music generation.
+<html>
+<head>
+<link href="https://fonts.googleapis.com/css?family=Lobster" rel="stylesheet">
+<style>
+html { 
+  background: url(http://www.mosconcert.com/images/88c22f1d78d6afca3b1c0742bbaf1fae.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position-y: 0%;
+}
+body, textarea {
+  font-family: 'Lobster', cursive;
+  color: #444;
+}
+.form-control {
+display: block;
+    width: 30%;
+    height: 40%;
+    padding: 6px 12px;
+    font-size: 16pt;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+.btn{
+    color: #fff;
+    background-color: #449d44;
+    border-color: #398439;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 16pt;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    margin-top: 1%;
+}
+.btn.focus, .btn:focus, .btn:hover {
+    color: #333;
+    text-decoration: none;
+}
+</style>
+</head>
+<body>
+<div style="margin-left:43%;margin-top:1%">
+<h2 class="title" style="font-size:32pt">Never Ending Music</h2>
 <form method="post">
-<textarea name="source" placeholder="Write text here"></textarea>
-<input type="submit" />
-</form> 
+<textarea class="form-control" name="source" placeholder="La la la"></textarea>
+<input class="btn" type="submit" value="Musify" />
+</form>
+</div>
+</body> 
+</html>
